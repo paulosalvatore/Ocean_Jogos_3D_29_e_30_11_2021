@@ -10,6 +10,9 @@ public class Canhao : MonoBehaviour
 
     public float delayEntreObjetos = 2f;
 
+    [Range(100f, 2000f)]
+    public float forcaCanhao = 500f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,10 @@ public class Canhao : MonoBehaviour
 
     void GerarObjeto()
     {
-        Instantiate(balaCanhao, transform.position, transform.rotation);
+        var objetoGerado = Instantiate(balaCanhao, transform.position, transform.rotation);
+
+        var rb = objetoGerado.GetComponent<Rigidbody>();
+
+        rb.AddRelativeForce(Vector3.up * forcaCanhao);
     }
 }

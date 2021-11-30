@@ -4112,6 +4112,7 @@ MonoBehaviour:
   balaCanhao: {fileID: 7750600172926689976, guid: c01b2fa2c4207504ebc87ac1cc1bfd1d, type: 3}
   delayInicial: 1
   delayEntreObjetos: 2
+  forcaCanhao: 500
 --- !u!1001 &2078958928
 PrefabInstance:
   m_ObjectHideFlags: 0
