@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Jogador : MonoBehaviour
 {
@@ -8,10 +10,14 @@ public class Jogador : MonoBehaviour
 
     public float velocidade = 3;
 
+    int placar = 0;
+
+    public Text placarText;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        placarText.text = "Placar: " + placar;
     }
 
     // Update is called once per frame
@@ -30,5 +36,34 @@ public class Jogador : MonoBehaviour
         var h = Input.GetAxis("Horizontal") * velocidade;
 
         rb.velocity = new Vector3(h, rb.velocity.y, v);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        // print("Colisão entre Jogador e " + other.gameObject.name);
+
+        if (other.gameObject.CompareTag("BalaCanhão"))
+        {
+            // print("Colidimos com a bala de canhão");
+
+            placar = placar + 1;
+            // Podemos encurtar essa declaração: placar += 1; ou placar++;
+
+            placarText.text = "Placar: " + placar;
+        }
+
+        /*
+        // Exemplos de códigos para ajudar na depuração
+        // Método C# tradicional
+        Console.WriteLine("Texto 0");
+
+        // Unity
+        Debug.Log("Texto 1");
+        Debug.LogError("Texto 2");
+        Debug.LogWarning("Texto 3");
+
+        // Unity para facilitar para quem tá começando (equivalente a Debug.Log)
+        print("Texto 4");
+        */
     }
 }
